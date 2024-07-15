@@ -97,7 +97,7 @@ export const Schedule = () => {
       interval = setInterval(() => {
         checkTrains(currentTime, activeTrains, trainList);
         removeFromPlatForm(currentTime, p1Train, p2Train);
-      }, 5000);
+      }, 3000);
     }
     return () => clearInterval(interval);
   }, [currentTime, trainList, p1Train, p2Train, activeTrains]);
