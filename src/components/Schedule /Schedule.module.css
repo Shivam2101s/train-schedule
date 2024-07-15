@@ -1,0 +1,50 @@
+.header {
+  width: 100%;
+  background: rgb(61, 61, 255);
+  padding: 8px;
+  text-align: center;
+  & > h1 {
+    color: white;
+  }
+}
+
+.inputs_container {
+  margin: 12px auto;
+  background: rgb(245, 245, 245);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  width: fit-content;
+  min-width: 50%;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  & > input {
+    height: 40px;
+  }
+}
+.container {
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  gap: 12px;
+  & > :nth-child(n) {
+    flex: 1;
+  }
+}
+.platforms {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
