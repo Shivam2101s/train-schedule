@@ -13,7 +13,7 @@ export const List: React.FunctionComponent<ListPropType> = ({
   data,
 }) => {
   const formatDate = (val: any) => {
-    return dayjs(val).format("hh:mm A, DD/MM/YYYY");
+    return dayjs(val).format("hh:mm A");
   };
   return (
     <div className={s.root}>

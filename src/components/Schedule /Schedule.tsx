@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import s from "./Schedule.module.css";
 import { TrainDataType, TrainFieldsEnum } from "../../types";
 import List from "../List";
+import dayjs from "dayjs";
 
 const initState = {
   trainNumber: "",
@@ -29,7 +30,12 @@ export const Schedule = () => {
       if (
         !trainList?.find((item) => item.trainNumber === formData.trainNumber)
       ) {
-        setTrainList((prev) => [...prev, formData]);
+        const data:TrainDataType = {
+       trainNumber: formData?.trainNumber,
+       arrivalTime: `${dayjs().format('YYYY-MM-DD')}T${formData?.arrivalTime}` ,
+       departureTime: `${dayjs().format('YYYY-MM-DD')}T${formData?.departureTime}`
+        }
+        setTrainList((prev) => [...prev, data]);
         setFormData(initState);
       } else {
         alert("Train number already exist!!");
@@ -120,6 +126,12 @@ export const Schedule = () => {
         <h1>Train Schedule</h1>
       </div>
       <div className={s.inputs_container}>
+        <div>
+          <span>
+            <b>Current time: </b>
+            {dayjs(currentTime).format("HH:mm:ss A")}
+          </span>
+        </div>
         <form onSubmit={handleSubmit} className={s.form}>
           <div className={s.field}>
             <h5>Train number</h5>
@@ -136,7 +148,7 @@ export const Schedule = () => {
           <div className={s.field}>
             <h5>Arrival Time</h5>
             <input
-              type="datetime-local"
+              type='time'
               value={formData?.arrivalTime}
               required
               onChange={(e) => {
@@ -147,7 +159,7 @@ export const Schedule = () => {
           <div className={s.field}>
             <h5>Departure Time</h5>
             <input
-              type="datetime-local"
+              type="time"
               value={formData?.departureTime}
               required
               onChange={(e) => {
